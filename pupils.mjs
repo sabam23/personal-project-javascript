@@ -12,4 +12,11 @@ export class Pupils {
         this.pupils.set(id, updatedProfile);
         return id;
     }
+    remove (id) {
+        if(!this.pupils.has(id)) {
+            throw Error('Invalid Id');
+        }
+
+        return this.pupils.delete(id);
+    }
 }
