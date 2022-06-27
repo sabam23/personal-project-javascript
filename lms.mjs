@@ -2,22 +2,36 @@ export class LMS {
     lms = new Map();
 
     add(subject) {
-        if (!subject instanceof Subject) {
+        if (!(subject instanceof Subject)) {
             throw new Error('Not Subject Instance!');
         }
-        this.lms.set(subject.id, subject);
+        this.lms.set(subject.subject.id, subject.subject);
 
         return subject.id;
     }
 
-    remove(id) {
-        if (typeof id !== 'string') {
-            throw new TypeError('Type should be a string');
-        } else if (this.lms.has(id) === false){
+    remove(subject) {
+        if (this.lms.has(subject.subject.id) === false){
             throw Error('Invalid Id');
         }
 
-        this.lms.delete(id);
+        this.lms.delete(subject.subject.id);
+    }
+
+    verify (subject) {
+        if (this.lms.has(subject.subject.id) === false){
+            return false;
+        } else if (this.lms.has(subject.subject.id)) {
+            return true;
+        }
+    }
+
+    readAll () {
+        let result = [];
+        for (const i of this.lms.values()) {
+            result.push(i);
+        }
+        return result;
     }
 }
 
@@ -31,10 +45,8 @@ export class Subject {
         } else if (typeof this.subject.lessons !== 'number') {
             throw new Error('Lessons is required and type should be a number !');
         } else if (this.subject.hasOwnProperty('description') && typeof this.subject.description !== 'string') {
-            throw new TypeError('Type should be a string !');
+            throw new TypeError('Description Type should be a string !');
         }
         this.subject.id = Math.floor(Math.random() * 15000).toString();
-
-        return this.subject;
     }
 }
