@@ -11,15 +11,18 @@ export class Teachers {
             throw new Error('Full Name should be a string');
         }
         //Date
+        const dateExp =/^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/g;
         if (typeof teacher.dateOfBirth !== 'string') {
-            throw new Error('Type should be a Date');
+            throw new Error('Type should be a string');
+        } else if (dateExp.test(teacher.dateOfBirth) === false) {
+            throw new Error('Enter date format');
         }
         //Email
         if (Array.isArray(teacher.emails) === false) {
             throw new Error('Type should be an array');
         }
         for (let email of teacher.emails) {
-            if(typeof email !== 'obect')
+            if(typeof email !== 'object')
             if (typeof email.email !== 'string' || typeof email.primary !== 'boolean') {
                 throw new Error('Emails Should be a string and primary boolean');
             }
@@ -29,8 +32,8 @@ export class Teachers {
             throw new Error('Type should be an array');
         }
         for (let phone of teacher.phones) {
-            if (typeof phone.phone !== 'string' && typeof phone.primary !== 'boolean') {
-                throw new Error('Emails Should be a string and primary boolean');
+            if (typeof phone.phone !== 'string' || typeof phone.primary !== 'boolean') {
+                throw new Error('Phone Should be a string and primary boolean');
             }
         }
         //Sex

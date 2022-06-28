@@ -4,10 +4,12 @@ export class Gradebooks {
         this.teachers = teachers;
         this.lms = lms;
     }
-
     gradebooks = new Map();
 
     add(groupid) {
+        if (this.groups.groups.has(groupid) === false) {
+            throw new Error('Invalid Group Id');
+        }
         let result = {};
         result.room = this.groups.groups.get(groupid).room;
         result.id = this.groups.groups.get(groupid).id;
@@ -55,7 +57,6 @@ export class Gradebooks {
             if (i.id === pupilid) {
                 result.name = i.name.first + ' ' + i.name.last;
                 result.records = [];
-
                 for (let j in records) {
                     if (pupilid === records[j].pupilId) {
                         let teacher = this.teachers.teachers.get(records[j].teacherId);
@@ -68,6 +69,9 @@ export class Gradebooks {
                     }
                 }
             }
+        }
+        if (result.name === undefined) {
+           console.log('No info');
         }
         return result;
     }

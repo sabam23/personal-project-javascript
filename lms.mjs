@@ -49,4 +49,8 @@ export class Subject {
         }
         this.subject.id = Math.floor(Math.random() * 15000).toString();
     }
+    get id() {
+        return this.subject.id;
+    }
+
 }
