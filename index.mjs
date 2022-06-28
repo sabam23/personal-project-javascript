@@ -1,6 +1,7 @@
 import {LMS, Subject} from './lms.mjs';
 import {Teachers} from "./teachers.mjs";
 import {Pupils} from "./pupils.mjs";
+import {Groups} from "./groups.mjs";
 
 const history = new Subject({
     title: 'History',
@@ -100,4 +101,13 @@ const updatedProfile = {
 const pupil = pupils.add(pupilData);
 pupils.update(pupil, updatedProfile)
 // pupils.remove(pupil)
-console.log(pupil.id);
+
+const room = 236;
+const groups = new Groups();
+
+
+// Create a new group. add methods takes integer as a parameter. returns id of group
+const groupId = groups.add(room);
+groups.addPupil(groupId, pupil);
+groups.removePupil(groupId, pupil.id)
+console.log(groups.read(groupId));
