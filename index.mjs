@@ -1,5 +1,6 @@
 import {LMS, Subject} from './lms.mjs';
 import {Teachers} from "./teachers.mjs";
+import {Pupils} from "./pupils.mjs";
 
 const history = new Subject({
     title: 'History',
@@ -68,4 +69,35 @@ const teacherId = teachers.add(data);
 // teachers.update(teacherId, data2);
 teachers.remove(teacherId);
 
-console.log(teachers);
+const pupils = new Pupils();
+const pupilData = {
+    name:
+        {
+            first: 'Saba',
+            last: 'Mchedlishvili'
+        },
+    dateOfBirth: '11/12/11',
+    phones: [{
+        phone: '55131515',
+        primary: true
+    }],
+    sex: 'Male'
+}
+const updatedProfile = {
+    name:
+        {
+            first: 'ER',
+            last: 'Mchedlishvili'
+        },
+    dateOfBirth: '11112/11',
+    phones: [{
+        phone: '551515',
+        primary: false
+    }],
+    sex: 'Male',
+    description: 'ss'
+}
+const pupil = pupils.add(pupilData);
+pupils.update(pupil, updatedProfile)
+// pupils.remove(pupil)
+console.log(pupil.id);
