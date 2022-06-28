@@ -41,35 +41,37 @@ const data = {
         }
     ]
 }
-// const data2 = {
-//     name: {
-//         first: 'Test',
-//         last: 'Doe'
-//     },
-//     dateOfBirth: '12/13/14',
-//     emails: [
-//         {
-//             email: 'johndoe@gmail.com',
-//             primary: false
-//         }
-//     ],
-//     phones: [
-//         {
-//             phone: '551315606',
-//             primary: false
-//         }
-//     ],
-//     sex: 'Female',
-//     subjects: [
-//         {
-//             subject: 'Math'
-//         }
-//     ]
-// }
+const data2 = {
+    name: {
+        first: 'Test',
+        last: 'Doe'
+    },
+    dateOfBirth: '12/13/14',
+    emails: [
+        {
+            email: 'johndoe@gmail.com',
+            primary: false
+        }
+    ],
+    phones: [
+        {
+            phone: '551315606',
+            primary: false
+        }
+    ],
+    sex: 'Female',
+    subjects: [
+        {
+            subject: 'Math'
+        }
+    ]
+}
 const teachers = new Teachers();
 const teacherId = teachers.add(data);
+const teach = teachers.add(data2);
 // teachers.update(teacherId, data2);
-teachers.remove(teacherId);
+// teachers.remove(teacherId);
+// console.log(teachers);
 
 const pupils = new Pupils();
 const pupilData = {
@@ -101,8 +103,10 @@ const updatedProfile = {
 }
 
 const pupil = pupils.add(pupilData);
-pupils.update(pupil, updatedProfile)
-// pupils.remove(pupil)
+const pupil2= pupils.add(updatedProfile)
+// pupils.update(pupil, updatedProfile)
+pupils.remove(pupil2.id)
+// console.log(pupils);
 
 const room = 236;
 const groups = new Groups();
@@ -111,8 +115,31 @@ const groups = new Groups();
 // Create a new group. add methods takes integer as a parameter. returns id of group
 const groupId = groups.add(room);
 groups.addPupil(groupId, pupil);
-groups.removePupil(groupId, pupil.id)
+groups.addPupil(groupId, pupil2);
+// groups.removePupil(groupId, pupil.id)
 groups.update(groupId, {
     room: 239
 });
-console.log(groups.read(groupId));
+// console.log(groups.groups.get(groupId).pupils);
+const gradebooks = new Gradebooks(groups, teachers, lms);
+const gradebook = gradebooks.add(groupId);
+const record = {
+    pupilId: pupil.id,
+    teacherId: teacherId,
+    subjectId: history.subject.id,
+    lesson: 1,
+    mark: 9
+};
+const record2 = {
+    pupilId: pupil2.id,
+    teacherId: teacherId,
+    subjectId: history.subject.id,
+    lesson: 2,
+    mark: 15
+};
+
+gradebooks.addRecord(gradebook, record);
+gradebooks.addRecord(gradebook, record2);
+// gradebooks.clear();
+
+console.log(gradebooks.read(gradebook, pupil2.id));

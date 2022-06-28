@@ -8,6 +8,7 @@ export class Groups {
         rooms.id = Math.floor(Math.random() * 15000).toString();
         rooms.room = room;
         this.groups.set(rooms.id, rooms);
+        rooms.pupils = [];
         return rooms.id;
     }
 
@@ -16,7 +17,7 @@ export class Groups {
             throw Error('Invalid Group Id');
         }
 
-        let pupils = this.groups.get(id).pupils = [];
+        let pupils = this.groups.get(id).pupils;
         pupils.push(pupil);
     }
 
@@ -25,11 +26,10 @@ export class Groups {
             throw new Error('Invalid iD');
         }
 
-        let group = this.groups.get(groupid);
         let c = 0;
-        for (let i of group.pupils) {
+        for (let i of this.groups.get(groupid).pupils) {
             if (i.id === pupilid) {
-                group.pupils.splice(c);
+                this.groups.get(groupid).pupils.splice(c,1);
             }
             c++;
         }

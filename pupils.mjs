@@ -12,7 +12,7 @@ export class Pupils {
         return id;
     }
     remove (id) {
-        if(!this.pupils.has(id)) {
+        if(this.pupils.has(id) === false) {
             throw Error('Invalid Id');
         }
 

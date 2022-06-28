@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="8ea334bf-5f89-4b6a-8811-ef327b69b937" name="Changes" comment="Finish Teachers Module">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/groups.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/groups.mjs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/index.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pupils.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/pupils.mjs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +53,7 @@
       <option name="presentableId" value="Default" />
       <updated>1656312083231</updated>
       <workItem from="1656312084514" duration="11465000" />
-      <workItem from="1656344745761" duration="14133000" />
+      <workItem from="1656344745761" duration="29713000" />
     </task>
     <task id="LOCAL-00001" summary="Finish Teachers Module">
       <created>1656351081021</created>
