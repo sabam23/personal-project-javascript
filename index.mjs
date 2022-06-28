@@ -2,6 +2,7 @@ import {LMS, Subject} from './lms.mjs';
 import {Teachers} from "./teachers.mjs";
 import {Pupils} from "./pupils.mjs";
 import {Groups} from "./groups.mjs";
+import {Gradebooks} from "./gradebooks.mjs";
 
 const history = new Subject({
     title: 'History',
@@ -98,6 +99,7 @@ const updatedProfile = {
     sex: 'Male',
     description: 'ss'
 }
+
 const pupil = pupils.add(pupilData);
 pupils.update(pupil, updatedProfile)
 // pupils.remove(pupil)
@@ -110,4 +112,7 @@ const groups = new Groups();
 const groupId = groups.add(room);
 groups.addPupil(groupId, pupil);
 groups.removePupil(groupId, pupil.id)
+groups.update(groupId, {
+    room: 239
+});
 console.log(groups.read(groupId));

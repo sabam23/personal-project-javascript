@@ -42,4 +42,9 @@ export class Groups {
 
         return this.groups.get(id);
     }
+
+    update (id, newData) {
+        this.groups.get(id).room = newData.room;
+        return id;
+    }
 }
